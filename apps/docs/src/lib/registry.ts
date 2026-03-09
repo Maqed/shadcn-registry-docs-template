@@ -241,7 +241,7 @@ export function createFileTreeForRegistryItemFiles(
           existingNode.path = path;
         } else {
           // Move to next level in the tree
-          currentLevel = existingNode.children!;
+          currentLevel = existingNode.children ?? [];
         }
       } else {
         const newNode: FileTree = isFile
@@ -251,7 +251,7 @@ export function createFileTreeForRegistryItemFiles(
         currentLevel.push(newNode);
 
         if (!isFile) {
-          currentLevel = newNode.children!;
+          currentLevel = newNode.children ?? [];
         }
       }
     }
