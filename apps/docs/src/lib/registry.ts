@@ -4,7 +4,7 @@ import path from "node:path";
 import { type RegistryItem, registryItemSchema } from "shadcn/schema";
 import { Project, ScriptKind } from "ts-morph";
 
-import { Index } from "../registry/__index__";
+import { Index } from "../../registry/__index__";
 
 export function getRegistryComponent(name: string) {
   return Index[name]?.component;
