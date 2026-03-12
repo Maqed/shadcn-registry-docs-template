@@ -5,13 +5,14 @@ import { CodeBlock, Pre } from "fumadocs-ui/components/codeblock";
 import type * as React from "react";
 import { getRegistryItem } from "@/lib/registry";
 import { cn } from "@/lib/utils";
+import { CodeCollapsibleWrapper } from "./code-collapsible-wrapper";
 
 export async function ComponentSource({
   name,
   src,
   title,
   language,
-  collapsible = false,
+  collapsible = true,
   className,
 }: React.ComponentProps<"div"> & {
   name?: string;
@@ -61,7 +62,9 @@ export async function ComponentSource({
     return <div className={cn("relative", className)}>{block}</div>;
   }
 
-  // return (
-  //   <CodeCollapsibleWrapper className={className}>{block}</CodeCollapsibleWrapper>
-  // )
+  return (
+    <CodeCollapsibleWrapper className={className}>
+      {block}
+    </CodeCollapsibleWrapper>
+  );
 }
