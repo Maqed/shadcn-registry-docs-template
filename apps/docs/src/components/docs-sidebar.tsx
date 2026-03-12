@@ -13,6 +13,9 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarMenuSub,
+  SidebarMenuSubButton,
+  SidebarMenuSubItem,
 } from "@/registry/new-york-v4/ui/sidebar";
 
 export function DocsSidebar({
@@ -29,30 +32,46 @@ export function DocsSidebar({
     >
       <SidebarContent className="mx-auto no-scrollbar w-(--sidebar-menu-width) overflow-x-hidden px-2">
         {tree.children.map((item) => {
+          const hasLink =
+            item.type === "page" ||
+            (item.type === "folder" && item.index && item.index.url);
+
           return (
             <SidebarGroup key={item.$id}>
-              <SidebarGroupLabel className="font-medium text-muted-foreground">
-                {item.name}
-              </SidebarGroupLabel>
+              {hasLink ? (
+                <SidebarMenuButton
+                  render={
+                    <Link
+                      href={
+                        item.type === "page"
+                          ? item.url
+                          : (item.index as { url: string }).url
+                      }
+                    >
+                      {item.name}
+                    </Link>
+                  }
+                />
+              ) : (
+                <SidebarGroupLabel className="font-medium text-muted-foreground">
+                  {item.name}
+                </SidebarGroupLabel>
+              )}
               <SidebarGroupContent>
                 {item.type === "folder" && (
                   <SidebarMenu className="gap-0.5">
-                    {getPagesFromFolder(item).map((page) => {
-                      return (
-                        <SidebarMenuItem key={page.url}>
-                          <SidebarMenuButton
-                            render={
-                              <Link href={page.url}>
-                                <span className="absolute inset-0 flex w-(--sidebar-menu-width) bg-transparent" />
-                                {page.name}
-                              </Link>
-                            }
-                            isActive={page.url === pathname}
-                            className="relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md data-[active=true]:border-accent data-[active=true]:bg-accent 3xl:fixed:w-full 3xl:fixed:max-w-48"
-                          />
-                        </SidebarMenuItem>
-                      );
-                    })}
+                    <SidebarMenuSub>
+                      {getPagesFromFolder(item).map((page) => {
+                        return (
+                          <SidebarMenuSubItem key={page.url}>
+                            <SidebarMenuSubButton
+                              render={<Link href={page.url}>{page.name}</Link>}
+                              isActive={page.url === pathname}
+                            />
+                          </SidebarMenuSubItem>
+                        );
+                      })}
+                    </SidebarMenuSub>
                   </SidebarMenu>
                 )}
               </SidebarGroupContent>
