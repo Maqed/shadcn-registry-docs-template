@@ -36,12 +36,7 @@ export function SiteHeader() {
           />
           <MainNav items={siteConfig.navItems} className="hidden lg:flex" />
           <div className="ml-auto flex items-center gap-2 md:flex-1 md:justify-end">
-            <div className="hidden w-full flex-1 md:flex md:w-auto md:flex-none">
-              <CommandMenu
-                tree={pageTree}
-                // navItems={siteConfig.navItems}
-              />
-            </div>
+            <CommandMenu tree={pageTree} navItems={siteConfig.navItems} />
             <Separator
               orientation="vertical"
               className="ml-2 hidden lg:block"

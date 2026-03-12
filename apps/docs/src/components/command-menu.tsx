@@ -1,4 +1,5 @@
 "use client";
+import { SearchIcon } from "lucide-react";
 import Link from "next/link";
 import type { ComponentProps } from "react";
 import * as React from "react";
@@ -119,7 +120,7 @@ export function CommandMenu({
           <Button
             variant="outline"
             className={cn(
-              "relative h-8 w-full justify-start rounded-lg pl-3 font-normal text-foreground shadow-none hover:bg-muted/50 sm:pr-12 md:w-48 lg:w-40 xl:w-64 dark:bg-card",
+              "relative h-8 w-fit justify-start rounded-lg md:pl-3 font-normal text-foreground shadow-none hover:bg-muted/50 md:w-48 lg:w-40 xl:w-64 dark:bg-card",
             )}
             onClick={() => setOpen(true)}
             {...props}
@@ -127,7 +128,10 @@ export function CommandMenu({
             <span className="hidden xl:inline-flex">
               Search documentation...
             </span>
-            <span className="inline-flex xl:hidden">Search...</span>
+            <span className="hidden md:inline-flex xl:hidden">Search...</span>
+            <span>
+              <SearchIcon className="md:hidden" />
+            </span>
           </Button>
         }
       ></CommandDialogTrigger>
