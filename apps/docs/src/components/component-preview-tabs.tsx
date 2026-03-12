@@ -38,26 +38,25 @@ export function ComponentPreviewTabs({
         <div
           data-slot="code"
           data-mobile-code-visible={isMobileCodeVisible}
-          className="relative overflow-hidden **:data-[slot=copy-button]:right-4 **:data-[slot=copy-button]:hidden data-[mobile-code-visible=true]:**:data-[slot=copy-button]:flex [&_[data-rehype-pretty-code-figure]]:m-0! [&_[data-rehype-pretty-code-figure]]:rounded-t-none [&_[data-rehype-pretty-code-figure]]:border-t [&_pre]:max-h-72"
+          className="relative"
         >
           {isMobileCodeVisible ? (
             source
           ) : (
-            <div className="relative">
+            <div className="relative h-32 overflow-hidden">
               {sourcePreview}
-              <div className="absolute inset-0 flex items-center justify-center pb-4">
+              <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
                 <div
                   className="absolute inset-0"
                   style={{
                     background:
-                      "linear-gradient(to top, var(--color-code), color-mix(in oklab, var(--color-code) 60%, transparent), transparent)",
+                      "linear-gradient(to top, var(--color-background), color-mix(in oklab, var(--color-background) 60%, transparent), transparent)",
                   }}
                 />
                 <Button
                   type="button"
                   size="sm"
-                  variant="outline"
-                  className="relative z-10 rounded-lg bg-background text-foreground shadow-none hover:bg-muted dark:bg-background dark:text-foreground dark:hover:bg-muted"
+                  className="pointer-events-auto relative z-10"
                   onClick={() => {
                     setIsMobileCodeVisible(true);
                   }}
