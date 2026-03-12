@@ -12,7 +12,6 @@ import {
   SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
-  SidebarMenuItem,
   SidebarMenuSub,
   SidebarMenuSubButton,
   SidebarMenuSubItem,
@@ -53,13 +52,11 @@ export function DocsSidebar({
                   }
                 />
               ) : (
-                <SidebarGroupLabel className="font-medium text-muted-foreground">
-                  {item.name}
-                </SidebarGroupLabel>
+                <SidebarGroupLabel>{item.name}</SidebarGroupLabel>
               )}
               <SidebarGroupContent>
                 {item.type === "folder" && (
-                  <SidebarMenu className="gap-0.5">
+                  <SidebarMenu>
                     <SidebarMenuSub>
                       {getPagesFromFolder(item).map((page) => {
                         return (
