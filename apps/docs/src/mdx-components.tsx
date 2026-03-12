@@ -1,6 +1,6 @@
 import defaultMdxComponents from "fumadocs-ui/mdx";
 import type { MDXComponents } from "mdx/types";
-import { CLIInstall } from "@/components/cli-install";
+import { CodeBlockCommand } from "@/components/code-block-command";
 import { CodeTabs } from "@/components/code-tabs";
 import { ComponentPreview } from "@/components/component-preview";
 import { ComponentSource } from "@/components/component-source";
@@ -24,7 +24,7 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     ComponentPreviewTabs,
     CodeTabs,
     Tabs,
-    CLIInstall,
+    CodeBlockCommand,
     TabsContent,
     TabsList,
     TabsTrigger,

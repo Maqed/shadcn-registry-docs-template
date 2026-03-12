@@ -20,7 +20,7 @@ import {
 
 type PackageManager = "npm" | "yarn" | "pnpm" | "bun";
 
-export function CodeBlockCommand({
+export function CodeBlockCommandWrapper({
   __npm__,
   __yarn__,
   __pnpm__,
@@ -134,13 +134,20 @@ export function CodeBlockCommand({
   );
 }
 
-export function CLIInstall({ command }: { command: string }) {
-  return (
-    <CodeBlockCommand
-      __pnpm__={`pnpm dlx ${command}`}
-      __npm__={`npx ${command}`}
-      __yarn__={`yarn ${command}`}
-      __bun__={`bunx ${command}`}
-    />
-  );
+export function CodeBlockCommand({ command }: { command: string }) {
+  const commandWithoutNpm = command.split(" ").slice(1).join(" ");
+  let output = {
+    __pnpm__: `pnpm dlx ${commandWithoutNpm}`,
+    __npm__: `npx ${commandWithoutNpm}`,
+    __yarn__: `yarn ${commandWithoutNpm}`,
+    __bun__: `bunx ${commandWithoutNpm}`,
+  };
+  if (command.startsWith("npm"))
+    output = {
+      __pnpm__: `pnpm ${commandWithoutNpm}`,
+      __npm__: `npm ${commandWithoutNpm}`,
+      __yarn__: `yarn ${commandWithoutNpm}`,
+      __bun__: `bun ${commandWithoutNpm}`,
+    };
+  return <CodeBlockCommandWrapper {...output} />;
 }
