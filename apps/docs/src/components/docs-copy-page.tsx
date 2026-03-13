@@ -5,17 +5,15 @@ import { CheckIcon, ChevronDownIcon, CopyIcon } from "lucide-react";
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 import { Button } from "@/registry/new-york-v4/ui/button";
 import {
+  ButtonGroup,
+  ButtonGroupSeparator,
+} from "@/registry/new-york-v4/ui/button-group";
+import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/registry/new-york-v4/ui/dropdown-menu";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/registry/new-york-v4/ui/popover";
-import { Separator } from "@/registry/new-york-v4/ui/separator";
 
 function getPromptUrl(baseURL: string, url: string) {
   return `${baseURL}?q=${encodeURIComponent(
@@ -162,60 +160,40 @@ const menuItems = {
 export function DocsCopyPage({ page, url }: { page: string; url: string }) {
   const { copyToClipboard, isCopied } = useCopyToClipboard();
 
-  const trigger = (
-    <Button
-      variant="secondary"
-      size="sm"
-      className="peer -ml-0.5 size-8 shadow-none md:size-7 md:text-[0.8rem]"
-    >
-      <ChevronDownIcon className="rotate-180 sm:rotate-0" />
-    </Button>
-  );
-
   return (
-    <Popover>
-      <div className="group/buttons relative flex rounded-lg bg-secondary *:data-[slot=button]:focus-visible:relative *:data-[slot=button]:focus-visible:z-10">
-        <Button
-          variant="secondary"
-          size="sm"
-          className="h-8 shadow-none md:h-7 md:text-[0.8rem]"
-          onClick={() => copyToClipboard(page)}
-        >
-          {isCopied ? <CheckIcon /> : <CopyIcon />}
-          Copy Page
-        </Button>
-        <DropdownMenu>
-          <DropdownMenuTrigger render={trigger} className="hidden sm:flex" />
-          <DropdownMenuContent
-            align="end"
-            className="animate-none! min-w-52 rounded-lg shadow-none"
-          >
-            {Object.entries(menuItems).map(([key, value]) => (
-              <DropdownMenuItem key={key} render={value(url)} />
-            ))}
-          </DropdownMenuContent>
-        </DropdownMenu>
-        <Separator
-          orientation="vertical"
-          className="absolute top-1 right-8 z-0 h-6! bg-foreground/5! peer-focus-visible:opacity-0 sm:right-7 sm:h-5!"
+    <ButtonGroup className="group/buttons rounded-lg bg-secondary">
+      <Button
+        variant="secondary"
+        size="sm"
+        className="h-8 shadow-none md:h-7 md:text-[0.8rem]"
+        onClick={() => copyToClipboard(page)}
+      >
+        {isCopied ? <CheckIcon /> : <CopyIcon />}
+        Copy Page
+      </Button>
+      <ButtonGroupSeparator className="bg-foreground/5" />
+      <DropdownMenu>
+        <DropdownMenuTrigger
+          render={
+            <Button
+              variant="secondary"
+              size="sm"
+              className="peer -ml-0.5 size-8 shadow-none md:size-7 md:text-[0.8rem]"
+            >
+              <ChevronDownIcon className="rotate-180 sm:rotate-0" />
+            </Button>
+          }
+          className="hidden sm:flex"
         />
-        <PopoverTrigger render={trigger} className="flex sm:hidden" />
-        <PopoverContent
-          className="w-52 origin-center! rounded-lg bg-background/70 p-1 shadow-none backdrop-blur-sm dark:bg-background/60"
-          align="start"
+        <DropdownMenuContent
+          align="end"
+          className="animate-none! min-w-52 rounded-lg shadow-none"
         >
           {Object.entries(menuItems).map(([key, value]) => (
-            <Button
-              variant="ghost"
-              size="lg"
-              key={key}
-              className="w-full justify-start text-base font-normal *:[svg]:text-muted-foreground"
-              render={value(url)}
-              nativeButton={false}
-            />
+            <DropdownMenuItem key={key} render={value(url)} />
           ))}
-        </PopoverContent>
-      </div>
-    </Popover>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </ButtonGroup>
   );
 }
