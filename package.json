@@ -11,7 +11,7 @@
 		"build": "turbo build",
 		"check-types": "turbo check-types",
 		"check": "biome check --write .",
-		"prepare": "is-ci || husky"
+		"prepare": "husky || true"
 	},
 	"dependencies": {
 		"dotenv": "^17.2.2",
@@ -21,7 +21,6 @@
 		"@biomejs/biome": "^2.2.0",
 		"@shadcn-registry-docs-template/config": "workspace:*",
 		"husky": "^9.1.7",
-		"is-ci": "^3.0.1",
 		"lint-staged": "^16.1.2",
 		"turbo": "^2.8.12",
 		"typescript": "^5"
