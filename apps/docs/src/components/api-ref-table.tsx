@@ -1,4 +1,3 @@
-/** biome-ignore-all lint/suspicious/noArrayIndexKey: <Not an issue> */
 "use client";
 import { ChevronDown } from "lucide-react";
 
