@@ -3,6 +3,7 @@
 import { CheckIcon, ChevronDownIcon, CopyIcon } from "lucide-react";
 
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
+import { siteConfig } from "@/lib/config";
 import { Button } from "@/registry/new-york-v4/ui/button";
 import {
   ButtonGroup,
@@ -17,7 +18,7 @@ import {
 
 function getPromptUrl(baseURL: string, url: string) {
   return `${baseURL}?q=${encodeURIComponent(
-    `I’m looking at this shadcn/ui documentation: ${url}.
+    `I’m looking at this ${siteConfig.name} documentation: ${url}.
 Help me understand how to use it. Be ready to explain concepts, give examples, or help debug based on it.
   `,
   )}`;
