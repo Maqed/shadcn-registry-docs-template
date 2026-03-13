@@ -61,7 +61,17 @@ import { Button } from "@/components/ui/button"
 
 The `Button` component accepts all props from [`@base-ui-components/react` Button](https://base-ui.com/react/components/button) plus the following:
 
-| Prop      | Type                                                                       | Default     |
-| --------- | -------------------------------------------------------------------------- | ----------- |
-| `variant` | `"default" \| "secondary" \| "outline" \| "ghost" \| "destructive" \| "link"` | `"default"` |
-| `size`    | `"default" \| "xs" \| "sm" \| "lg" \| "icon" \| "icon-xs" \| "icon-sm" \| "icon-lg"` | `"default"` |
+<ApiRefTable
+  props={[
+    {
+      name: "variant",
+      type: '"default" | "secondary" | "outline" | "ghost" | "destructive" | "link"',
+      defaultValue: '"default"',
+    },
+    {
+      name: "size",
+      type: '"default" | "xs" | "sm" | "lg" | "icon" | "icon-xs" | "icon-sm" | "icon-lg"',
+      defaultValue: '"default"',
+    },
+  ]}
+/>
