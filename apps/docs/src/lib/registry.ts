@@ -197,7 +197,10 @@ export function fixImport(content: string, pathMappings: Map<string, string>) {
   });
 
   // Fix UI component imports
-  content = content.replaceAll("@/components/ui/", "@/components/ui/");
+  content = content.replaceAll(
+    "@/registry/new-york-v4/ui/",
+    "@/components/ui/",
+  );
 
   // Fix example imports
   content = content.replaceAll(
