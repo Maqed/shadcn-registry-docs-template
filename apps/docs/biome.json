@@ -15,7 +15,9 @@
       "!dist",
       "!build",
       "!.source",
-      "!public"
+      "!public",
+      "!registry/__index__.tsx",
+      "!registry.json"
     ]
   },
   "formatter": {
