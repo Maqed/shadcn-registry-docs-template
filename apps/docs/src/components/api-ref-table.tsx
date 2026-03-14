@@ -10,6 +10,7 @@ import {
 } from "@/registry/new-york-v4/ui/collapsible";
 import {
   Table,
+  TableBody,
   TableCell,
   TableHead,
   TableHeader,
@@ -101,9 +102,11 @@ export function ApiRefTable({ props, className }: ApiRefTableProps) {
           <TableHead>Default</TableHead>
         </TableRow>
       </TableHeader>
-      {props.map((prop) => (
-        <ApiRefRow key={prop.name} prop={prop} />
-      ))}
+      <TableBody>
+        {props.map((prop) => (
+          <ApiRefRow key={prop.name} prop={prop} />
+        ))}
+      </TableBody>
     </Table>
   );
 }
