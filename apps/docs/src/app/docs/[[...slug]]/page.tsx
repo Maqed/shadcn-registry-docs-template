@@ -27,6 +27,7 @@ export default async function Page(props: {
     ? { previous: null, next: null }
     : findNeighbour(source.pageTree, page.url);
   const raw = await page.data.getText("raw");
+  const markdownUrl = `/llms.mdx/docs/${[...page.slugs, "index.mdx"].join("/")}`;
 
   return (
     <div
@@ -44,7 +45,7 @@ export default async function Page(props: {
                 </h1>
                 <div className="docs-nav flex items-center gap-2">
                   <div className="hidden sm:block">
-                    <DocsCopyPage page={raw} url={absoluteUrl(page.url)} />
+                    <DocsCopyPage page={raw} url={absoluteUrl(markdownUrl)} />
                   </div>
                   <div className="ml-auto flex gap-2">
                     {neighbours.previous && (
