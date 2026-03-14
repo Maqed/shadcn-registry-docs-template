@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 
+import { processMdxForLLMs } from "@/lib/llm";
 import { getLLMText, source } from "@/lib/source";
 
 export const revalidate = false;
@@ -13,7 +14,9 @@ export async function GET(
   const page = source.getPage(slug?.slice(0, -1));
   if (!page) notFound();
 
-  return new Response(await getLLMText(page), {
+  const text = await getLLMText(page);
+
+  return new Response(processMdxForLLMs(text), {
     headers: {
       "Content-Type": "text/markdown",
     },
