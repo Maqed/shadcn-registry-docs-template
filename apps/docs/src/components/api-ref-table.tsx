@@ -41,6 +41,7 @@ function ApiRefRow({ prop }: { prop: ApiProp }) {
     >
       <CollapsibleTrigger
         disabled={!hasDetails}
+        nativeButton={false}
         render={(props) => (
           <TableRow
             {...props}
@@ -50,13 +51,6 @@ function ApiRefRow({ prop }: { prop: ApiProp }) {
                 ? "cursor-pointer focus-visible:outline-none focus-visible:bg-muted/70"
                 : "hover:bg-inherit",
             )}
-            onKeyDown={(e) => {
-              // This fixes a11y
-              if (hasDetails && (e.key === "Enter" || e.key === " ")) {
-                e.preventDefault();
-                setOpen((state) => !state);
-              }
-            }}
           />
         )}
       >
