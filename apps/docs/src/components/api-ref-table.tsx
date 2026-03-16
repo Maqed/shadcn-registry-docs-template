@@ -44,20 +44,22 @@ function ApiRefRow({ prop }: { prop: ApiProp }) {
       <TableCell>
         <code className="font-mono text-xs">{prop.type}</code>
       </TableCell>
-      <TableCell className="flex items-center justify-between">
-        {prop.defaultValue ? (
-          <code className="font-mono text-xs">{prop.defaultValue}</code>
-        ) : (
-          <span className="text-muted-foreground text-xs">—</span>
-        )}
-        {hasDetails && (
-          <ChevronDown
-            className={cn(
-              "h-3 w-3 shrink-0 text-muted-foreground transition-transform",
-              open && "rotate-180",
-            )}
-          />
-        )}
+      <TableCell>
+        <div className="flex items-center justify-between">
+          {prop.defaultValue ? (
+            <code className="font-mono text-xs">{prop.defaultValue}</code>
+          ) : (
+            <span className="text-muted-foreground text-xs">—</span>
+          )}
+          {hasDetails && (
+            <ChevronDown
+              className={cn(
+                "h-3 w-3 shrink-0 text-muted-foreground transition-transform",
+                open && "rotate-180",
+              )}
+            />
+          )}
+        </div>
       </TableCell>
     </>
   );
@@ -67,7 +69,7 @@ function ApiRefRow({ prop }: { prop: ApiProp }) {
       <Collapsible
         open={open}
         onOpenChange={setOpen}
-        render={(props) => <tbody {...props} />}
+        render={({ children }) => <>{children}</>}
       >
         <CollapsibleTrigger
           nativeButton={false}
@@ -82,7 +84,7 @@ function ApiRefRow({ prop }: { prop: ApiProp }) {
         </CollapsibleTrigger>
         <CollapsibleContent render={(props) => <TableRow {...props} />}>
           <TableCell colSpan={3} className="text-xs text-muted-foreground">
-            {prop.description && prop.description}
+            {prop.description}
           </TableCell>
         </CollapsibleContent>
       </Collapsible>
