@@ -9,6 +9,7 @@
 	"scripts": {
 		"dev": "turbo dev",
 		"build": "turbo build",
+		"deps": "bunx taze@latest -rw",
 		"check-types": "turbo check-types",
 		"check": "biome check --write .",
 		"prepare": "husky || true"
