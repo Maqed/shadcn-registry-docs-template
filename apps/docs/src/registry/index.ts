@@ -3,7 +3,7 @@ import { examples } from "./registry-examples";
 import { ui } from "./registry-ui";
 
 // Shared between index and style for backward compatibility.
-const TEMPLATE_STYLE = {
+export const TEMPLATE_STYLE = {
   type: "registry:style" as const,
   dependencies: ["class-variance-authority", "lucide-react"],
   devDependencies: ["tw-animate-css"],
@@ -12,7 +12,7 @@ const TEMPLATE_STYLE = {
 };
 
 export const registry = {
-  name: "template/ui",
+  name: "shadcn-registry-docs-template/ui",
   homepage: "https://shadcn-registry-docs-template.pages.dev/",
   items: [
     {

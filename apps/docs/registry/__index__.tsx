@@ -26,8 +26,7 @@ export const Index: Record<string, any> = {
     registryDependencies: undefined,
     files: [{
       path: "src/registry/new-york-v4/ui/button.tsx",
-      type: "registry:ui",
-      target: ""
+      type: "registry:ui"
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/new-york-v4/ui/button.tsx")
@@ -41,8 +40,7 @@ export const Index: Record<string, any> = {
     registryDependencies: ["button"],
     files: [{
       path: "src/registry/new-york-v4/examples/button-demo.tsx",
-      type: "registry:example",
-      target: ""
+      type: "registry:example"
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/new-york-v4/examples/button-demo.tsx")
