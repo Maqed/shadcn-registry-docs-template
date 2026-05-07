@@ -242,11 +242,12 @@ function CommandFooter({ className, ...props }: React.ComponentProps<"div">) {
 }
 
 export {
-  CommandCreateHandle,
   Command,
   CommandCollection,
+  CommandCreateHandle,
   CommandDialog,
   CommandDialogPopup,
+  CommandDialogPrimitive,
   CommandDialogTrigger,
   CommandEmpty,
   CommandFooter,
@@ -258,5 +259,4 @@ export {
   CommandPanel,
   CommandSeparator,
   CommandShortcut,
-  CommandDialogPrimitive,
 };
