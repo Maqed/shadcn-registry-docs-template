@@ -19,11 +19,11 @@
 		"zod": "^4.4.3"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "^2.4.15",
+		"@biomejs/biome": "^2.4.16",
 		"@shadcn-registry-docs-template/config": "workspace:*",
 		"husky": "^9.1.7",
 		"lint-staged": "^16.4.0",
-		"turbo": "^2.9.14",
+		"turbo": "^2.9.16",
 		"typescript": "^5.9.3"
 	},
 	"lint-staged": {
